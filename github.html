@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub profil</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        background-image: url("images/pozadi7.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      h1 {
+        color: #bb00cc;
+        margin-bottom: 2rem;
+        animation: colorcycle 6s infinite alternate;
+      }
+
+      @keyframes colorcycle {
+        0% {
+          color: #e76fe1;
+        }
+        25% {
+          color: #c92391;
+        }
+        50% {
+          color: #d9e447;
+        }
+        75% {
+          color: #53e240;
+        }
+        100% {
+          color: #2c65ce;
+        }
+      }
+
+      .btn-github {
+        background: #d000ff;
+        color: white;
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 2rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      .btn-github:hover {
+        background: #a000cc;
+        transform: scale(1.05);
+      }
+
+      .btn-back {
+        margin-top: 2rem;
+        display: inline-block;
+        background: #e600ff;
+        color: white;
+        padding: 0.7rem 2rem;
+        border-radius: 2rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+
+      .btn-back:hover {
+        background: #bb00cc;
+      }
+
+      .info-text {
+        max-width: 700px;
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📂 Můj GitHub profil</h1>
+
+    <p class="info-text">
+      Na mém GitHubu najdete ukázky mých projektů z HTML, CSS a JavaScriptu –
+      včetně jednoduchých webů, animací, a designových komponent. Vše slouží
+      jako ukázka mé práce při studiu a vývoji v oblasti webdesignu a
+      programování.
+    </p>
+
+    <a class="btn-github" href="https://github.com/Rady80" target="_blank">
+      GitHub profil
+    </a>
+
+    <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
+  </body>
+</html>

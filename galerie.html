@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerie UX/UI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-image: url("images/pozadi8.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .gallery-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .gallery-header h1 {
+        font-size: 2.5rem;
+        color: #6a1b9a;
+        margin: 0;
+        animation: heartbeat 2s infinite ease-in-out,
+          colorChange 6s infinite linear;
+      }
+
+      .btn-back {
+        font-size: 1.2rem;
+        padding: 0.6rem 1.2rem;
+        background-color: #6a1b9a;
+        color: white;
+        border-radius: 0.6rem;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .btn-back:hover {
+        background-color: #4a126b;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.05);
+        }
+        50% {
+          transform: scale(0.98);
+        }
+        75% {
+          transform: scale(1.03);
+        }
+      }
+
+      @keyframes colorChange {
+        0% {
+          color: #ee42c3;
+        }
+        33% {
+          color: #e91e63;
+        }
+        66% {
+          color: #2196f3;
+        }
+        100% {
+          color: #269a1b;
+        }
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .gallery-item {
+        background-color: rgba(238, 231, 231, 0.05);
+        border-radius: 2rem;
+        box-shadow: 0 0 20px rgba(51, 50, 50, 0.7);
+        overflow: hidden;
+        padding: 2rem;
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        cursor: pointer;
+      }
+
+      .description {
+        padding: 1rem;
+        text-align: left;
+      }
+
+      .description h3 {
+        color: #8e24aa;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .description p {
+        color: #424242;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      /* RESPONSIVITA */
+      @media (max-width: 1024px) {
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-header h1 {
+          font-size: 2rem;
+        }
+      }
+
+      .lightbox {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .lightbox-content {
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 1rem;
+        box-shadow: 0 0 20px rgba(163, 161, 161, 0.4);
+        object-fit: contain;
+      }
+
+      .close-btn {
+        position: fixed;
+        top: 1rem;
+        right: 1.5rem;
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10000;
+      }
+
+      /* Styl pro první prvek galerie (širší) */
+      .gallery_full {
+        max-width: 1140px; /* nebo si dej kolik chceš */
+        width: 100%;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: rgba(238, 231, 231, 0.05);
+        border-radius: 2rem;
+        box-shadow: 0 0 20px rgba(51, 50, 50, 0.7);
+        text-align: left;
+      }
+
+      .gallery-item-full img {
+        max-width: 100%;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .gallery-item-full .description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #f1f1f1;
+      }
+
+      .gallery-item-full .description h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #e43be4;
+      }
+
+      .gallery-item-full .description p {
+        margin-bottom: 1.2rem;
+      }
+
+      .gallery-item-full strong {
+        color: #00d4ff;
+      }
+
+      .gallery-item-full strong[color="green"] {
+        color: #66ff66 !important;
+      }
+
+      .gallery-item-full em {
+        color: #9b197f;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="gallery-header">
+      <h1>🎨 Galerie UX/UI</h1>
+      <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
+    </header>
+
+    <div class="gallery_full">
+      <div class="gallery-item-full">
+        <img src="images/web_hotel_gold_perla1.png" alt="Úvodní stránka hotelu" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla2.png" alt="Rezervační formulář" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla3.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla4.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla5.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla6.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla7.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla8.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla9.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla10.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla11.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla12.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+        <img src="images/web_hotel_gold_perla13.png" alt="Sekce s recenzemi" class="lightbox-trigger" />
+
+        <div class="description">
+          <h3>Web Hotel Gold Perla</h3>
+          <p>
+            Tento projekt je
+            <strong>komplexní ukázkou moderního webu</strong> pro luxusní hotel,
+            který klade důraz na estetiku, uživatelskou přívětivost a funkční
+            prvky.
+          </p>
+
+          <p>
+            <strong style="color: #007bff">1. Grafický design a UX/UI:</strong
+            ><br />
+            Stránka je vizuálně působivá, s poutavým pozadím tropické pláže a
+            dominantním nadpisem, který ihned upoutá pozornost.<br />
+            Použité barvy a typografie odpovídají tematice luxusu a exotiky.<br />
+            Prvky jako <em>hvězdičkové hodnocení</em>, přesný čas a interaktivní
+            menu vytváří profesionální dojem.
+          </p>
+
+          <p>
+            <strong style="color: #007bff">2. Funkčnost:</strong><br />
+            Projekt obsahuje <strong>dynamický obsah</strong> jako aktuální
+            datum a čas, recenze hostů, přihlášení uživatele a tlačítka pro
+            odeslání recenze.<br />
+            Velmi působivá je <em>videoprezentace s ikonickým letoviskem</em>.
+          </p>
+
+          <p>
+            <strong style="color: #007bff">3. Mezinárodní přesah:</strong><br />
+            Implementace
+            <strong>jazykového přepínače a měnové volby</strong> ukazuje
+            připravenost pro mezinárodní návštěvnost,<br />
+            což zvyšuje profesionální úroveň celého webu.
+          </p>
+
+          <p>
+            <strong style="color: #007bff">4. Backend a Django:</strong><br />
+            Web je postaven na frameworku <strong>Django</strong>, což umožňuje
+            správu uživatelů, recenzí a rezervačního systému.<br />
+            Funguje i <em>autentizace a správa účtů</em>, což je klíčové pro
+            reálnou aplikaci.
+          </p>
+
+          <p>
+            <strong style="color: green">Závěr:</strong><br />
+            <em>Hotel Zlatá Perla Maledivy</em> je ukázkový projekt, který
+            demonstruje schopnosti v oblasti webdesignu, UX/UI i
+            programování.<br />
+            Spojuje <strong>vizuální atraktivitu</strong> s funkčním obsahem a
+            technickým zázemím.<br />
+            Hodí se jako <strong>silná součást portfolia</strong> a ukazuje
+            <strong>vysokou úroveň dovedností</strong> autorky projektu.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery">
+  <div class="gallery-item">
+      <img
+        src="images/wireframe1.png"
+        alt="Wireframe1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Wireframe 1</h3>
+        <p>
+          <strong>Popis:</strong> Digitální wireframe první verze hlavní stránky
+          výukového webu pro začátečníky v HTML, CSS a JavaScriptu.
+          <strong>Účel:</strong> Vizualizace základního rozložení obsahu a
+          tématických bloků. <strong>Řešený problém:</strong>
+          Organizace velkého množství informací do přehledného layoutu.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/wireframe2.png"
+        alt="Wireframe2"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Wireframe 2</h3>
+        <p>
+          <strong>Popis:</strong> Pokročilejší návrh s důrazem na obsahovou
+          hierarchii a tematické sekce. <strong>Účel:</strong> Zaměřeno na
+          snadnější orientaci uživatele a intuitivní navigaci.
+          <strong>Řešený problém:</strong> Zjednodušení přístupu k důležitým
+          sekcím webu (kurzy, články, kontakt...).
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/wireframe3.png"
+        alt="Wireframe3"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Wireframe 3</h3>
+        <p>
+          <strong>Popis:</strong> Designová varianta se zaměřením na moderní
+          vizuální přístup a tematické barevné rozvržení.
+          <strong>Účel:</strong> Představit přehled webových technologií
+          zábavnějším způsobem. <strong>Řešený problém:</strong> Zvýšit
+          atraktivitu obsahu a zaujmout uživatele při prvním dojmu.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/prototyp1.png"
+        alt="Prototyp1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Prototyp 1</h3>
+        <p>
+          🔹 <strong>Prototyp</strong> rozvržení stránky – výukový web
+          zjednodušený barevný návrh rozložení prvků stránky. Obsahuje názvy
+          sekcí, náhledy komponent (obrázky, texty, ikonky) a základní
+          strukturu. Ukazuje, jak bude stránka vypadat před vizuálním doladěním.
+          <strong>Cílem</strong> je otestovat funkčnost a rozložení obsahu před
+          tvorbou finálního designu.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/mockup1.png" alt="Mockup1" class="lightbox-trigger" />
+      <div class="description">
+        <h3>Mockup 1</h3>
+        <p>
+          🔹 <strong>Mockup</strong> výukové stránky – finální vzhled Vizuálně
+          propracovaný návrh, který ukazuje finální design webu. Obsahuje
+          skutečné obrázky, barvy, typografii a celkové grafické zpracování.
+          Slouží k prezentaci výsledného vzhledu a nálady webové stránky.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/visitka1.png" alt="Visitka 1" class="lightbox-trigger" />
+      <div class="description">
+        <h3>Visitka 1</h3>
+        <p>
+          Moderní, barevně laděná vizitka s jemnými efekty a květinovou grafikou
+          působí příjemně a hravě. Obsahuje profesioní portrét Radky Nováčkové a
+          jasně strukturované kontaktní údaje. Stylové písma a ikony dodávají
+          ženský a osobitý vzhled. Je vidět, že pracuje v kreativním oboru UX/UI
+          designu a důraz na vizuální dojem.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/sitemap1.png"
+        alt="Sitemap"
+        class="lightbox-trigger tall-img"
+      />
+      <div class="description">
+        <h3>Sitemap 1</h3>
+        <p>
+          <strong>Popis:</strong> Struktura výukového webu rozdělená do čtyř
+          hlavních sekcí – HTML, CSS, JavaScript a Návody. Cílem je znázornit
+          hierarchii a logické uspořádání jednotlivých témat a podstránek pro
+          snadnou orientaci a plánování obsahu webu.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/empathy_mapa1.png"
+        alt="Empathy mapa1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Empathy mapa 1</h3>
+        <p>
+          <strong>Popis:</strong> Empathy mapa znázorňuje potřeby, přání, obavy
+          a chování uživatelky (persony) jménem Martina. Pomáhá lépe pochopit
+          její myšlení a rozhodování při nákupu oblečení. Slouží jako podklad
+          pro návrh uživatelsky přívětivého řešení a cílené komunikace.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/empathy_mapa2.png"
+        alt="Empathy mapa1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Empathy mapa 2</h3>
+        <p>
+          <strong>Popis:</strong> Tato empathy mapa představuje Davida, 40letého
+          umělce, který hledá rovnováhu mezi tvorbou a finanční jistotou. Mapa
+          znázorňuje jeho obavy (např. strach z finančního kolapsu, tvůrčí
+          blok), přání (např. inspirovat ostatní, svoboda tvorby) a zároveň to,
+          co vidí, slyší, říká a cítí. Pomáhá pochopit jeho motivace, vnitřní
+          boje i potřeby, které ovlivňují jeho chování a rozhodování při tvůrčí
+          práci. <strong>Cíl:</strong>Získat hlubší porozumění uživatele -
+          tvůrce, který touží po uznání a svobodě, ale zároveň řeší existenční
+          potřeby.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/moodboard1.png"
+        alt="Moodboard 1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Moodboard 1</h3>
+        <p>
+          Tento moodboard zachycuje výrazný a odvážný street style s jasným
+          poselstvím:
+          <strong>"Styl je síla."</strong> Jasné barvy, graffiti, energické pózy
+          a kombinace módních prvků zdůrazňují rebelii, sebevědomí a
+          individualitu. Vizuály reprezentují mladé lidi, kteří chtějí vyjádřit
+          svou osobnost skrze oděv a postoj. Styl je zde nástrojem
+          sebevyjádření, svobody a originality. Vhodné pro módní značky cílené
+          na mladou, kreativní a sebevědomou generaci.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/moodboard2.png"
+        alt="Moodboard 2"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Moodboard 2</h3>
+        <p>
+          Tento moodboard reprezentuje elegantní a sofistikovaný styl s důrazem
+          na monochromatickou paletu, jemnost a grácii. Obsahuje inspiraci z
+          moderní módy, kde ticho a minimalismus nesou vnitřní sílu.
+          <strong>Klíčová sdělení:</strong> "Whisper your power", "Style with
+          grace" a "Silence is strength" definují decentní, ale pevný postoj.
+          Paleta zahrnuje přírodní odstíny, pastelové barvy a jemné kontrasty.
+          Styl je vhodný pro ženy, které chtějí vypadat sebejistě, aniž by
+          musely být hlasité.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/bootstrap_desktop1.png"
+        alt="Bootstrap desktop 1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Bootstrap desktop 1</h3>
+        <p>
+          Moderní a přehledný layout navržený v Bootstrapu. Levý panel umožňuje
+          efektivní filtrování dle klíčových parametrů. Produkty jsou zobrazeny
+          ve formě karet s cenou a popisem. Pravé menu obsahuje kalendář,
+          přihlášení a košík. Použité barvy (zelená, fialová) působí jemně a
+          příjemně. Vhodné pro fashion e-shop.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/journey_map1.png"
+        alt="Journey map 1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Journey map 1</h3>
+        <p>
+          Journey map sleduje cestu Petry Malé od plánování výletu až po vrácení
+          vybavení. Ukazuje její kroky, emoce, problémy a příležitosti ke
+          zlepšení. Zaměřuje se na potřebu jednoduchosti, rychlosti a jistoty
+          při výběru a vrácení výbavy. <strong>Klíčové body:</strong> hledání
+          vybavení, rezervace, převzetí a návrat probíhají hladce, pokud je vše
+          přehledné a dobře komunikováno.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/user_story_map1.png"
+        alt="User story map 1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>User story map 1</h3>
+        <p>
+          User Story Map zobrazuje cestu uživatele Lukáše Nováka, studenta VŠ,
+          který chce snadno vyhledat, rezervovat a vypůjčit knihy pomocí mobilní
+          aplikace. Mapuje hlavní aktivity jako hledání knih, rezervaci a
+          uložení titulu, přesné kroky, které uživatel vykoná, a řešení možných
+          problémů (např. nedostupnost knihy nebo chyba při platbě).
+          <strong>Cílem</strong> je vylepšit UX pomocí jednoduché orientace,
+          filtrování a rychlé rezervace knih. Dokument pomáhá prioritizovat
+          funkcionality (MVP, problémy, řešení) při vývoji aplikace.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img
+        src="images/infokarta_e-shopu1.png"
+        alt="Infokarta e-shopu 1"
+        class="lightbox-trigger"
+      />
+      <div class="description">
+        <h3>Infokarta e-shopu 1</h3>
+        <p>
+          Jednoduchá a působivá infokarta, která kombinuje příjemný design s
+          jasnou strukturou. Klady: Profesionální nadpis s podnadpisem (Apple /
+          Hardware and software) Silný inspirativní slogan podporující značku
+          Velký působivý obrázek zaujme na první pohled Tlačítka "Buy" jsou
+          barevně sladěná a snadno rozpoznatelná Celkově pěkna karta s
+          potenciálem, který lze ještě vylepšit pro větší přehlednost a
+          funkčnost v e-shopovém prostředí.
+        </p>
+      </div>
+    </div>
+    <!-- Přidej další položky podle potřeby -->
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="close-btn">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" />
+    </div>
+
+    <script>
+      // Otevření lightboxu
+      document.querySelectorAll(".lightbox-trigger").forEach((img) => {
+        img.addEventListener("click", function () {
+          const lightbox = document.getElementById("lightbox");
+          const lightboxImg = document.getElementById("lightbox-img");
+          lightbox.style.display = "flex";
+          lightboxImg.src = this.src;
+        });
+      });
+
+      // Zavření přes křížek
+      document
+        .querySelector(".close-btn")
+        .addEventListener("click", function () {
+          document.getElementById("lightbox").style.display = "none";
+        });
+
+      // Zavření kliknutím mimo obrázek
+      document
+        .getElementById("lightbox")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.style.display = "none";
+          }
+        });
+    </script>
+  </body>
+</html>

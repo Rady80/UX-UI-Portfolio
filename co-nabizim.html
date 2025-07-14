@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Více info</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        height: 100%;
+      }
+
+      body {
+        background-image: url("images/pozadi2.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-top: -3cm;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .box {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 2rem;
+        border-radius: 2rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(8px);
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .container .box:first-child {
+        width: 820px;
+        height: 520px;
+      }
+
+      .container .box:nth-child(2) {
+        width: 500px;
+        height: 522px;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        color: #e600ff;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      .box ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1rem;
+      }
+
+      .box li {
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+      }
+
+      .btn-back {
+        position: absolute;
+        bottom: 1rem; /* vzdálenost od boxu */
+        left: 50%;
+        transform: translateX(-50%);
+        background: #e600ff;
+        color: white;
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-decoration: none;
+      }
+
+      .btn-back:hover {
+        background: #bb00cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <h2 style="color: #590078; font-weight: bold">✨ Co nabízím</h2>
+
+        <h3 style="color: #590078; font-weight: bold">💻 Webový vývoj</h3>
+        <ul>
+          <li>
+            <strong>HTML5, CSS3, JavaScript</strong> – Základy moderního webu.
+            Tvořím čistý, přehledný a funkční kód, který odpovídá současným
+            standardům. Mám smysl pro detail a estetiku, což se odráží i v
+            samotné struktuře webových stránek.
+          </li>
+          <li>
+            <strong>Responzivní weby</strong> – Weby přizpůsobené všem zařízením
+            – mobil, tablet i desktop.
+          </li>
+          <li>
+            <strong>Optimalizace kódu</strong> – Rychlý, efektivní a dobře
+            strukturovaný kód pro skvělý výkon.
+          </li>
+          <li>
+            <strong>Práce s GitHubem</strong> – Používám Git a GitHub pro
+            verzování a sdílení projektů.
+          </li>
+        </ul>
+
+        <h3 style="color: #590078; font-weight: bold">🎨 UX/UI Design</h3>
+        <ul>
+          <li>
+            <strong>Návrhy ve Figmě</strong> – Tvořím vizuálně čisté a funkční
+            návrhy ve Figmě.
+          </li>
+          <li>
+            <strong>Prototypy a wireframy</strong> – Navrhuji logické struktury
+            webu, které ladí s potřebami uživatelů.
+          </li>
+          <li>
+            <strong>Uživatelské testování</strong> – Zohledňuji zpětnou vazbu
+            pro vylepšování uživatelské přívětivosti.
+          </li>
+          <li>
+            <strong>Moderní estetika</strong> – Sleduji designové trendy a
+            přizpůsobuji je konkrétnímu projektu.
+          </li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2>📅 Moje cesta</h2>
+        <ul>
+          <li>
+            <strong style="color: #e600ff">2024</strong><br />Dokončila kurz na
+            Step IT Academy a mám certifikát na kurz programování v Pythonu pro
+            webové vývojáře
+          </li>
+          <li>
+            <strong style="color: #e600ff">2025</strong><br />Začala studovat
+            další kurz na Step IT Academy kurz UI/UX design
+          </li>
+          <li>
+            <strong style="color: #e600ff">2025</strong><br />Tvorba vlastního
+            portfolia, první klienti a reálné projekty
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
+  </body>
+</html>

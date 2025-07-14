@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spolupráce</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      body {
+        background-image: url("images/pozadi3.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        color: #fff;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 2rem;
+        padding: 1.5rem 2rem;
+        width: 90%;
+        max-width: 1000px;
+        height: 650px; /* <<< TADY si uprav výšku podle potřeby */
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-out;
+      }
+
+      h1 {
+        color: #ff00cc;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .step {
+        margin-bottom: 1.5rem;
+      }
+
+      .step h3 {
+        color: #e600ff;
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .step p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #0a0a0a;
+      }
+
+      .btn-back {
+        display: inline-block;
+        margin-top: 2rem;
+        background: #e600ff;
+        color: rgb(10, 10, 10);
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+
+      .btn-back:hover {
+        background: #5d1b63;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🛠️ Jak probíhá spolupráce UX/UI designérky</h1>
+
+      <div class="step">
+        <h3>1. Úvodní konzultace</h3>
+        <p>
+          Seznámíme se s projektem, cíli a vizí. Naslouchám a sbírám informace
+          pro další kroky.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>2. Analýza a výzkum</h3>
+        <p>
+          Analyzuji cílovou skupinu, potřeby uživatelů a konkurenci, abych
+          vytvořila podklad pro návrh.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>3. Wireframy a struktura</h3>
+        <p>
+          Navrhnu logickou strukturu pomocí wireframů – jednoduché skici pro
+          přehled a funkčnost.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>4. UI Design</h3>
+        <p>
+          Vytvořím estetický, moderní a funkční design odpovídající značce a
+          potřebám projektu.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>5. Zpětná vazba</h3>
+        <p>
+          Prezentuji návrh a na základě zpětné vazby upravuji detaily a
+          připomínky.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>6. Předání nebo implementace</h3>
+        <p>
+          Předávám hotový návrh nebo pokračuji kódováním – podle domluvy s
+          klientem.
+        </p>
+      </div>
+
+      <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
+    </div>
+  </body>
+</html>
