@@ -65,8 +65,13 @@
         transition: background 0.3s ease;
       }
 
+      button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(214, 71, 233, 0.5);
+      }
+
       .btn-back:hover {
-        background: #bb00cc;
+        background: #4263d1;
       }
 
       @keyframes fadeIn {
@@ -78,6 +83,81 @@
           opacity: 1;
           transform: translateY(0);
         }
+      }
+
+      @keyframes rainbowWave {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      h2 {
+        background: linear-gradient(
+          90deg,
+          #e69c9d,
+          #ff6b6b,
+          #ff944e,
+          #ffc94e,
+          #e5ff4e,
+          #4eff7c,
+          #4edaff,
+          #a44eff
+        );
+        background-size: 300% 300%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        animation: rainbowWave 6s ease infinite;
+
+        /* ✅ Tenký černý obrys kolem písma */
+        filter: drop-shadow(0 0 1px black);
+      }
+
+      @keyframes rainbowWave {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes heartBeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.05);
+        }
+        50% {
+          transform: scale(0.97);
+        }
+        75% {
+          transform: scale(1.03);
+        }
+      }
+
+      .quote {
+        margin-top: 2.1rem;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: #5a2675; /* jemná, kontrastní barva */
+        text-align: center;
+        opacity: 0.85;
+        animation: heartBeat 3.5s ease-in-out infinite;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .quote:hover {
+        transform: scale(1.02);
+        opacity: 1;
       }
     </style>
   </head>
@@ -96,6 +176,9 @@
       <p>Každý návrh tvořím s citem pro estetiku, logiku a emoci.</p>
 
       <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
+      <p class="quote">
+        „Design není jen o vzhledu. Je to o tom, jak věci fungují.“
+      </p>
     </div>
   </body>
 </html>
