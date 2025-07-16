@@ -494,3 +494,175 @@ nav a:hover {
 .gallery-buttons a.gallery-btn:hover {
   background-color: #2b0f78;
 }
+
+:root {
+  --fialova: #2b0f78;
+  --white: #f7f7f7;
+  --kruh: 3rem;
+  --ikona: 2rem;
+  --polovina-kruhu: calc(var(--kruh) / 2);
+  --polovina-ikony: calc(var(--ikona) / 2);
+  --transition-delka: 0.45s;
+  --transition-easing: ease;
+}
+
+.omnem-btn {
+  border: none;
+  background-color: none;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.025rem;
+  cursor: pointer;
+  height: var(--kruh);
+  position: relative;
+  overflow: hidden; /* ⬅️ Tohle je důležité, aby .kruh mohl růst přes text */
+}
+
+.omnem-btn .text {
+  position: relative;
+  padding-left: var(--kruh);
+  margin-left: 1rem;
+  vertical-align: -webkit-baseline-middle;
+  padding-right: 2rem;
+  color: var(--fialova);
+  transition: color var(--transition-delka) var(--transition-easing);
+  z-index: 2; /* ⬅️ Text bude nad pozadím */
+  /* ✨ Animace barvy textu */
+  animation: textBarvaAnimace 2.5s ease-in-out infinite;
+}
+
+.omnem-btn .kruh {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--kruh);
+  height: var(--kruh);
+  background-color: var(--fialova);
+  border-radius: var(--kruh);
+  background: linear-gradient(45deg, #2b0f78, #6a0dad, #b266ff, #2b0f78);
+  transition: width var(--transition-delka) var(--transition-easing);
+  z-index: 1; /* ⬅️ Zajišťuje, že pozadí je za textem */
+  /* ✅ Přidáno – tohle spustí animaci hned po načtení */
+  animation: zoomWave 2.5s ease-in-out infinite, gradientShift 6s ease infinite;
+}
+
+.omnem-btn .ikona svg {
+  width: var(--ikona);
+  height: var(--ikona);
+  position: absolute;
+  left: calc(var(--polovina-kruhu) - var(--polovina-ikony));
+  top: calc(var(--polovina-kruhu) - var(--polovina-ikony));
+  margin-left: -0.25rem;
+  animation: sipkaAnimace 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+.omnem-btn .ikona path {
+  fill: var(--white);
+}
+
+/* ANIMOVANÁ LINKA */
+.omnem-btn .linka {
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0;
+  animation: linkaAnimace 2s infinite ease-in-out;
+  fill: var(--white);
+  transition: opacity var(--transition-delka) var(--transition-easing);
+  z-index: 2;
+}
+
+button:hover .kruh {
+  width: 100%;
+  border-radius: 2rem; /* aby se přizpůsobilo roztáhnutému tvaru */
+}
+
+button:hover .text {
+  color: var(--white);
+}
+
+button:hover .linka {
+  opacity: 1;
+}
+
+button:hover svg {
+  margin-left: 1rem;
+  transition: margin var(--transition-delka) var(--transition-easing);
+}
+
+@keyframes zoomWave {
+  0%,
+  100% {
+    width: var(--kruh);
+  }
+  50% {
+    width: 100%;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* LINKA SE ROZTAHUJE → SPOJÍ SE S HROTEM */
+@keyframes linkaAnimace {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+/* ANIMACE */
+@keyframes sipkaAnimace {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomWave {
+  0%,
+  100% {
+    width: var(--kruh);
+  }
+  50% {
+    width: 100%;
+  }
+}
+
+@keyframes textBarvaAnimace {
+  0%,
+  100% {
+    color: var(--fialova);
+  }
+  50% {
+    color: var(--white);
+  }
+}
