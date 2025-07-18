@@ -698,7 +698,7 @@ button:hover svg {
   width: 80px;
   height: auto;
   border-radius: 1rem;
-  margin-left: 2cm; /* ➡️ posune doprava o 2 cm */
+  margin-left: 0.5cm; /* ➡️ posune doprava o 2 cm */
 }
 
 /* volitelné – odstraníme zaoblení */
@@ -718,4 +718,68 @@ button:hover svg {
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* aby byla nad ostatními prvky */
+  background: linear-gradient(
+    to right,
+    #6a0dad,
+    #9b30ff
+  ); /* tmavě fialový přechod */
+  opacity: 0.9; /* poloprůhlednost */
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%); /* skosení vlevo dole */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 0 0.5rem; /* dřív bylo např. 1rem */
+  padding: 0.2rem 0.6rem;
+}
+
+.main-nav {
+  position: fixed;
+  top: 3mm; /* posunutí dolů */
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to right, #7209b7, #f000ff);
+  opacity: 0.95;
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1000;
+}
+
+.main-nav a {
+  color: white; /* bílé písmo */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0 1.5rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #ffe600;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
 }
