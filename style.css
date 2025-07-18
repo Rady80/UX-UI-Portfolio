@@ -80,23 +80,28 @@ h2 {
   color: #bb2fde;
 }
 
-/* Logo v kolečku */
 .logo-circle {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
   background-color: white;
-  animation: flipVertical 4s ease-in-out infinite;
+  margin-left: 4mm;
+  /* 3D rotace */
+  animation: flipY 3s ease-in-out 1s infinite; /* otočí se po ose Y, začne po 1s */
+  transform-style: preserve-3d;
+  backface-visibility: visible;
 }
 
-@keyframes flipVertical {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes flipY {
+  0% {
+    transform: rotateY(0deg);
   }
   50% {
-    transform: scaleY(-1);
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
   }
 }
 
@@ -146,11 +151,33 @@ nav a:hover {
   margin-bottom: 4rem;
 }
 
+/* Styl a animace pro fotku Radky */
 .profile-photo {
   width: 240px;
-  height: 280px;
-  border-radius: 1rem;
-  object-fit: cover;
+  border-radius: 1.5rem;
+  animation: breathe 6s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  margin: 1rem auto;
+}
+
+/* Jemné dýchání / pulsování */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.25); /* růžová záře */
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
+  }
+}
+
+/* Hover efekt – záře a přiblížení */
+.profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
 }
 
 .about-text {
@@ -664,5 +691,31 @@ button:hover svg {
   }
   50% {
     color: var(--white);
+  }
+}
+
+.gif-header {
+  width: 80px;
+  height: auto;
+  border-radius: 1rem;
+  margin-left: 2cm; /* ➡️ posune doprava o 2 cm */
+}
+
+/* volitelné – odstraníme zaoblení */
+.gif-header {
+  border-radius: 0;
+}
+
+/* volitelné – animace otáčení */
+.disco {
+  animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

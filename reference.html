@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Reference od klientů</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: url("images/pozadi6.jpg") no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 2rem;
+        color: #333;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        margin: 0 auto 2rem auto;
+      }
+
+      @keyframes shineText {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      h2 {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        margin: 0 auto;
+        background: linear-gradient(90deg, #7a0099, #e100ff, #7a0099);
+        background-size: 300%;
+        background-clip: text;              
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shineText 4s linear infinite;
+      }
+
+      .header-container {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-wrap: wrap;
+       max-width: 1100px;
+       margin: 0 auto;
+       position: relative;
+     }
+
+     .sticky-button-container {
+      position: fixed;
+      top: 1cm;         /* 3 cm od horního okraje */
+      right: 1rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+     .btn-back {
+     display: inline-block;
+     padding: 0.75rem 1.5rem;
+     background-color: #7a0099;
+     color: white;
+     text-decoration: none;
+     border-radius: 25px;
+     font-weight: bold;
+     transition: background-color 0.3s ease;
+    }
+
+      .btn-back:hover {
+        background-color: #9e00cc;
+      }
+
+      .reference-card {
+        background-color: #d09feccc;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin: 1rem auto;
+        max-width: 700px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      /* Posun celého formulářového kontejneru */
+      .reference-form-container {
+        margin-top: 2cm;
+      }
+
+      .reference-card:hover {
+        transform: scale(1.02);
+        background-color: #a9d7ddcc;
+      }
+
+      .reference-list .reference-card:nth-child(odd) {
+        background-color: #7350a5cc;
+        color: white;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .reference-list .reference-card:nth-child(even) {
+        color: #0c0c0c; /* čistě bílá */
+      }
+
+      .reference-list .reference-card:nth-child(odd):hover {
+        background-color: #7e2594cc; /* tmavší fialová při hoveru */
+      }
+
+      /* Podpis v lichých kartách (1., 3., ...) */
+      .reference-list .reference-card:nth-child(odd) .client {
+        color: #a3ffd6; /* světle tyrkysová */
+      }
+
+      /* Podpis v sudých kartách (2., 4., ...) */
+      .reference-list .reference-card:nth-child(even) .client {
+        color: #7a0099; /* tmavší fialová */
+      }
+
+      .quote {
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .client {
+        font-weight: bold;
+        text-align: right;
+        color: #555;
+      }
+
+      form {
+        max-width: 700px;
+        margin: 2rem auto;
+        background: url("images/pozadi9.jpg") no-repeat center center scroll;
+        background-size: cover;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      form textarea,
+      form input {
+        width: 100%;
+        padding: 0.75rem 1.2rem; /* přidáno vodorovné odsazení */
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-family: inherit;
+        box-sizing: border-box;
+      }
+
+      form button {
+        background-color: #7a0099;
+        color: rgb(245, 243, 245);
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      form button:hover {
+        background-color: #9e00cc;
+      }
+
+      @keyframes pulseText {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.02);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      form p {
+        font-weight: bold;
+        font-size: 1.1rem;
+        animation: pulseText 3s infinite ease-in-out;
+        padding-left: 5mm; /* 👈 posun doprava */
+      }
+
+      .highlighted {
+        color: #c5367d; /* nebo třeba #00c3ff pro tyrkysovou */
+      }
+
+      .highlighted {
+        color: #d60077; /* např. růžová nebo jiná zvýrazněná barva */
+      }
+
+      .black-text {
+        color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-container">
+  <h2>Reference od klientů</h2>
+   </div>
+
+    <div class="sticky-button-container">
+     <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
+    </div>
+
+    <form action="odeslat-reference.php" method="post">
+      <p>
+        <span class="highlighted">Máte vlastní zkušenost?</span><br />
+        <span class="black-text"
+          >Napište svou referenci či pochvalu a podělte se o ni s
+          ostatními:</span
+        >
+      </p>
+      <input type="text" name="jmeno" placeholder="Vaše jméno" required />
+      <textarea
+        name="zprava"
+        rows="5"
+        placeholder="Vaše reference..."
+        required
+      ></textarea>
+      <button type="submit">Odeslat referenci</button>
+    </form>
+
+    <!-- OBAL referencí -->
+    <div class="reference-list">
+      <div class="reference-card">
+        <p class="quote">
+          Spolupráce s Radkou byla skvělá! Web vytvořila rychle, krásně a
+          přesně podle zadání. Doporučuji každému.
+        </p>
+        <p class="client"> Jana Krásná, lektorka jazyků</p>
+      </div>
+
+      <div class="reference-card">
+        <p class="quote">
+          Skvělá komunikace, krásný UX návrh a web, který konečně funguje na
+          mobilech!
+        </p>
+        <p class="client"> Petr, podnikatel</p>
+      </div>
+
+      <div class="reference-card">
+  <p class="quote">
+    Oceňuji kreativitu, preciznost a lidský přístup. Těším se na další společný projekt.
+  </p>
+  <p class="client"> Eva Novotná, fotografka</p>
+</div>
+
+<div class="reference-card">
+  <p class="quote">
+    Perfektní kombinace kreativity a technické preciznosti. Radka okamžitě pochopila mou vizi a převedla ji do reality.
+  </p>
+  <p class="client"> Tomáš V., fotograf</p>
+</div>
+
+<div class="reference-card">
+  <p class="quote">
+    „Radka se opravdu vyzná! Web nejen krásně vypadá, ale je i rychlý a přehledný. Moc děkuji za skvělou spolupráci.“
+  </p>
+  <p class="client">– Lenka H., majitelka e-shopu</p>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
