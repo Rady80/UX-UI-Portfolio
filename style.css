@@ -327,18 +327,22 @@ nav a:hover {
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  padding: 0 2cm;
+  display: flex;
+  flex-wrap: nowrap; /* ✅ důležité - zakáže zalamování do více řádků */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1cm; /* přesně 1 centimetr mezi videi */
+  padding: 1rem 0;
 }
 
 .gallery-grid video {
-  width: 192px;
+  width: 260px;
   height: 280px;
+  margin-right: 4px; /* nebo 6px, jak chceš – jen mezera mezi videi */
+  border-radius: 12px;
   object-fit: cover;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 /* Jemný efekt při najetí myší */
@@ -782,4 +786,25 @@ nav {
 
 .main-nav a:hover::after {
   width: 100%;
+}
+
+/* Telefony (do 600px) */
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablety (do 900px) */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Monitory nad 900px */
+@media (min-width: 901px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
