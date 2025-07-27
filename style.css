@@ -306,7 +306,9 @@ nav a:hover {
 
 .gallery-buttons {
   display: inline-flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  align-items: center;
   margin-bottom: 2rem;
   margin-top: 0.5cm; /* ← přidáno: posun dolů */
 }
@@ -381,11 +383,31 @@ nav a:hover {
 }
 
 .contact-info {
-  background-color: rgba(255, 202, 255, 0.8); /* poloprůhledná barva */
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  max-width: 300px;
-  font-style: italic; /* zůstane kurzíva, pokud chceš */
+  background: linear-gradient(270deg, #f9ccff, #b986e6, #d04ce7);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+/* Animace pozadí */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hover efekt pro jemné zvětšení */
+.contact-info:hover {
+  transform: scale(1.1);
 }
 
 /* Změna stylu pro "Adresa" */
@@ -405,12 +427,13 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   gap: 1.2rem; /* větší mezera mezi tlačítky */
-  margin-left: 2cm; /* ⬅️ posun doprava  */
+  margin-left: 0.5cm; /* ⬅️ posun doprava  */
+  margin-top: 0.6cm; /* ⬇️ posun dolů */
 }
 
 .contact-buttons a {
   display: inline-block;
-  padding: 0.3rem 1rem;
+  padding: 0.5rem 1rem; /* ⬅️ vyšší tlačítko – svislý padding zvýšen */
   background-color: #bb2fde;
   color: white;
   text-decoration: none;
@@ -418,7 +441,7 @@ nav a:hover {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 260px;
+  width: 240px;
   text-align: center;
 }
 
@@ -807,4 +830,137 @@ nav {
   .gallery-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+.email-label {
+  font-weight: bold;
+  color: rgb(238, 236, 236);
+}
+
+.email-address {
+  font-weight: bold;
+  animation: pulseColor 3s infinite;
+}
+
+/* Animace barev a pulsace */
+@keyframes pulseColor {
+  0% {
+    color: #eee8ee;
+    transform: scale(1);
+    opacity: 1;
+  }
+  33% {
+    color: #444d9e;
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  66% {
+    color: #350547;
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    color: #0c0108;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.facebook-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite; /* přidáno */
+  transition: transform 0.3s ease;
+  margin-left: 2.5cm; /* ← zde je ten posun */
+}
+
+.facebook-circle:hover {
+  transform: scale(1.2); /* můžeš změnit intenzitu na hover */
+}
+
+.facebook-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.instagram-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  margin-left: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.instagram-circle:hover {
+  transform: scale(1.2);
+}
+
+.instagram-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.youtube-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+  margin-left: 0.5cm; /* posun mezi ikonami */
+}
+
+.youtube-circle:hover {
+  transform: scale(1.1);
+}
+
+.youtube-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

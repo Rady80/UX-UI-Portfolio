@@ -3,506 +3,295 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ukázky animací</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>✨ Interaktivní demo animací a her</title>
     <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: "Montserrat", sans-serif;
-      }
-
       body {
-        background-image: url("images/pozadi.jpg");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        min-height: 100vh;
-        padding: 2rem;
-        backdrop-filter: blur(4px);
-      }
-
-      h2 {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-image: url("images/pozadi1.jpg"); /* cesta k tvému pozadí */
+        background-size: cover; /* obrázek pokryje celé pozadí */
+        background-position: center; /* zarovnání obrázku na střed */
+        background-repeat: no-repeat; /* zabrání opakování obrázku */
+        color: #330033;
+        overflow: hidden;
         text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        animation: colorchange 6s infinite alternate;
       }
 
-      @keyframes colorchange {
+      h1 {
+        margin: 2rem auto 3rem;
+        font-size: 2.5rem;
+        color: #6e0074;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin: 0 2rem 4rem;
+      }
+
+      .box {
+        background-color: #fdf0ff;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        width: 250px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        animation: fadeIn 1s ease;
+      }
+
+      .box:hover {
+        transform: scale(1.03);
+      }
+
+      .circle {
+        margin: 1rem auto;
+        width: 80px;
+        height: 80px;
+        background-color: #ff80ff;
+        border-radius: 50%;
+      }
+
+      button {
+        background-color: #800080;
+        color: white;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Spinning */
+      .spinning {
+        animation: rotate 1s linear infinite;
+      }
+
+      @keyframes rotate {
         0% {
-          color: #e76fe1;
-        }
-        25% {
-          color: #c92391;
-        }
-        50% {
-          color: #d9e447;
-        }
-        75% {
-          color: #53e240;
+          transform: rotate(0deg);
         }
         100% {
-          color: #2c65ce;
+          transform: rotate(360deg);
         }
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
+      /* Barva */
+      .color-game {
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 1rem;
+        color: #fff;
+        background-color: #bb2fde;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
       }
 
-      .anim-box {
-        background: rgba(255, 255, 255, 0.4);
-        border-radius: 1.5rem;
-        padding: 1.5rem;
-        text-align: center;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      .color-game:hover {
+        background-color: #285ac5;
       }
 
-      .anim-box:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      .balloon-container {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
       }
 
-      .anim-area {
-        height: 100px;
-        margin-bottom: 1rem;
+      .balloon {
+        font-size: 2rem;
+        cursor: pointer;
+        transition: transform 3s ease-in, opacity 3s ease-in;
+      }
+
+      .balloon.flying {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0;
+      }
+
+      .magnet-box {
+        position: relative;
+      }
+
+      .magnet-target {
+        width: 80px;
+        height: 80px;
+        background-color: #ffccff;
+        border-radius: 50%;
+        margin: 1rem auto;
+        transition: transform 0.2s ease-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+      }
+
+      .gallery-header {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        padding: 2rem 1rem;
+        text-align: center;
       }
 
-      .anim-area div {
-        width: 40px;
-        height: 40px;
-        margin: 0 auto;
-        background-color: #bb00cc;
-        border-radius: 10px;
-      }
-
-      .anim-box p {
-        font-size: 0.95rem;
-        color: #222;
-        font-weight: 500;
-      }
-
-      /* Animace */
-      .spin {
-        border: 5px solid transparent;
-        border-top: 5px solid #bb00cc;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .slide {
-        animation: slide 2s ease-in-out infinite alternate;
-      }
-      @keyframes slide {
-        from {
-          transform: translateX(-20px);
-        }
-        to {
-          transform: translateX(20px);
-        }
-      }
-
-      .fade {
-        animation: fade 2s ease-in-out infinite alternate;
-      }
-      @keyframes fade {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0.2;
-        }
-      }
-
-      .pulse {
-        animation: pulse 1.5s infinite;
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1.2);
-          opacity: 0.7;
-        }
-      }
-
-      .bounce {
-        animation: bounce 1s infinite;
-      }
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-15px);
-        }
-      }
-
-      .zoom {
-        animation: zoom 2s infinite alternate;
-      }
-      @keyframes zoom {
-        from {
-          transform: scale(1);
-        }
-        to {
-          transform: scale(1.5);
-        }
-      }
-
-      .shake {
-        animation: shake 0.8s infinite;
-      }
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-        25% {
-          transform: translateX(-5px);
-        }
-        75% {
-          transform: translateX(5px);
-        }
-      }
-
-      .wiggle {
-        animation: wiggle 1.5s infinite;
-      }
-      @keyframes wiggle {
-        0% {
-          transform: rotate(0deg);
-        }
-        25% {
-          transform: rotate(-5deg);
-        }
-        75% {
-          transform: rotate(5deg);
-        }
-        100% {
-          transform: rotate(0deg);
-        }
-      }
-
-      .heartbeat {
-        background: #ff007f;
-        animation: heartbeat 1.5s infinite;
-        transform: rotate(-45deg);
-        width: 50px;
-        height: 45px;
-        position: relative;
-      }
-      .heartbeat::before,
-      .heartbeat::after {
-        content: "";
-        position: absolute;
-        width: 50px;
-        height: 45px;
-        background: #ff007f;
-        border-radius: 50%;
-      }
-      .heartbeat::before {
-        top: -25px;
-        left: 0;
-      }
-      .heartbeat::after {
-        left: 25px;
-        top: 0;
-      }
-      @keyframes heartbeat {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        25% {
-          transform: scale(1.3);
-        }
-        50% {
-          transform: scale(1);
-        }
-        75% {
-          transform: scale(1.3);
-        }
-      }
-
-      .flip {
-        transform-style: preserve-3d;
-        animation: flip 2s infinite;
-      }
-      @keyframes flip {
-        from {
-          transform: rotateY(0);
-        }
-        to {
-          transform: rotateY(360deg);
-        }
-      }
-
-      .roll {
-        animation: roll 2s linear infinite;
-      }
-      @keyframes roll {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .scale {
-        animation: scale 2s infinite alternate;
-      }
-      @keyframes scale {
-        from {
-          transform: scale(1);
-        }
-        to {
-          transform: scale(1.2);
-        }
-      }
-
-      .skew {
-        animation: skew 1s infinite alternate;
-      }
-      @keyframes skew {
-        from {
-          transform: skew(0deg, 0deg);
-        }
-        to {
-          transform: skew(15deg, 15deg);
-        }
-      }
-
-      .glow {
-        box-shadow: 0 0 10px #fff;
-        animation: glow 2s ease-in-out infinite alternate;
-      }
-      @keyframes glow {
-        from {
-          box-shadow: 0 0 5px #fff;
-        }
-        to {
-          box-shadow: 0 0 20px #f0f;
-        }
-      }
-
-      .pop {
-        animation: pop 1s ease-in-out infinite alternate;
-      }
-      @keyframes pop {
-        from {
-          transform: scale(1);
-        }
-        to {
-          transform: scale(1.4);
-        }
-      }
-
-      .hover-scale {
-        transition: transform 0.3s ease;
-      }
-      .hover-scale:hover {
-        transform: scale(1.3);
-      }
-
-      .flash {
-        animation: flash 1s infinite;
-      }
-      @keyframes flash {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-        }
-      }
-
-      .rotate-y {
-        animation: rotate-y 2s infinite linear;
-      }
-      @keyframes rotate-y {
-        from {
-          transform: rotateY(0deg);
-        }
-        to {
-          transform: rotateY(360deg);
-        }
-      }
-
-      .expand-contract {
-        animation: expand-contract 1.5s infinite alternate;
-      }
-      @keyframes expand-contract {
-        from {
-          transform: scale(0.9);
-        }
-        to {
-          transform: scale(1.2);
-        }
-      }
-
-      .drift {
-        animation: drift 5s ease-in-out infinite;
-      }
-      @keyframes drift {
-        0% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-        100% {
-          transform: translateY(0px);
-        }
+      .gallery-header h1 {
+        font-size: 2.5rem;
+        color: #6e0074;
+        margin: 0;
       }
 
       .btn-back {
-        display: inline-block;
-        background: #e600ff;
+        background-color: #bb2fde;
         color: white;
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-        border: none;
-        border-radius: 2rem;
-        cursor: pointer;
+        padding: 0.6rem 1.4rem;
+        border-radius: 1.2rem;
         text-decoration: none;
-        transition: background 0.3s ease;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
       }
 
       .btn-back:hover {
-        background: #bb00cc;
+        background-color: #6e0074;
       }
     </style>
   </head>
   <body>
-    <h2>✨ Ukázky animací</h2>
-    <div class="grid">
-      <div class="anim-box">
-        <div class="anim-area"><div class="spin"></div></div>
-        <p>Točící se loader – ideální pro indikaci načítání dat.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="slide"></div></div>
-        <p>Slide efekt – využití pro animaci menu nebo prvků na stránce.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="fade"></div></div>
-        <p>Efekt vyblednutí – použitelný pro titulky nebo přechodové texty.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="pulse"></div></div>
-        <p>Pulse efekt – hodí se pro upozornění na aktivní prvek.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="bounce"></div></div>
-        <p>Odskočení – upoutání pozornosti na tlačítka nebo notifikace.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="zoom"></div></div>
-        <p>Zoom in/out – přiblížení a oddálení prvku pro dramatický efekt.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="shake"></div></div>
-        <p>Shake – vhodné pro chybová hlášení nebo varování.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="wiggle"></div></div>
-        <p>Wiggle – hravý efekt například pro ikonky.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="heartbeat"></div></div>
-        <p>Heartbeat – jemné pulzování, ideální pro romantická témata.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="flip"></div></div>
-        <p>Flip – otočení prvku, vhodné pro kartičky s obsahem.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="roll"></div></div>
-        <p>Roll efekt – rotace, ideální pro vtipné nebo dynamické prvky.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="scale"></div></div>
-        <p>Scale – postupné zvětšování, pro zdůraznění.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="skew"></div></div>
-        <p>Skew – deformace tvaru pro vizuálně zajímavý efekt.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="glow"></div></div>
-        <p>Glow – světélkující efekt, vhodný pro noční motivy.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="pop"></div></div>
-        <p>Pop – krátký výskok prvku pro zvýraznění.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="hover-scale"></div></div>
-        <p>Hover zoom – mění velikost po najetí kurzorem.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="flash"></div></div>
-        <p>Flash efekt – krátké bliknutí, ideální pro upozornění.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="rotate-y"></div></div>
-        <p>3D rotace po ose Y – moderní efekt pro přepínání obsahu.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="expand-contract"></div></div>
-        <p>Expand & Contract – opakované roztažení a smrštění.</p>
-      </div>
-
-      <div class="anim-box">
-        <div class="anim-area"><div class="drift"></div></div>
-        <p>Drift – plynulý pohyb jako „vznášení se“ – jemné a elegantní.</p>
-      </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 3rem">
+    <header class="gallery-header">
+      <h1>🎮 Interaktivní demo animací a her</h1>
       <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
+    </header>
+
+    <div class="container">
+      <div class="box">
+        <h3>Změň barvu</h3>
+        <div class="circle" id="circle1"></div>
+        <button onclick="changeColor('circle1')">Klikni</button>
+      </div>
+
+      <div class="box">
+        <h3>Změň velikost</h3>
+        <div class="circle" id="circle2"></div>
+        <button onclick="changeSize('circle2')">Klikni</button>
+      </div>
+
+      <div class="box">
+        <h3>🎨 Vidíte rozdíl barev?</h3>
+        <p>Otestuj své oko v zábavné barevné výzvě:</p>
+        <a
+          href="https://www.sablatura.info/zajimave/barvy-a-himbove/"
+          target="_blank"
+          class="color-game"
+        >
+          Klikni a hraj
+        </a>
+      </div>
+
+      <div class="box magnet-box">
+        <h3>🧲 Magnetická interakce</h3>
+        <p>Interaktivní tah – pohybuj se kolem prvků:</p>
+        <div class="magnet-target">🧲</div>
+      </div>
+
+      <div class="box">
+        <h3>🧩 Poskládej mě zpět</h3>
+        <p>Obrázek se rozpadne a složí jako puzzle:</p>
+        <a
+          href="https://puzzlefactory.com/cs"
+          target="_blank"
+          class="color-game"
+        >
+          Klikni a poskládej!
+        </a>
+      </div>
+
+      <div class="box">
+        <h3>🎈 Balónky vzhůru</h3>
+        <p>Klikni na balónky a sleduj jejich vzlet:</p>
+        <div class="balloon-container">
+          <div class="balloon" onclick="fly(this)">🎈</div>
+          <div class="balloon" onclick="fly(this)">🎈</div>
+          <div class="balloon" onclick="fly(this)">🎈</div>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>🔠 Posuň písmena</h3>
+        <p>Vyzkoušej si typografii a vylaď rozestupy mezi písmeny:</p>
+        <a href="https://type.method.ac/#" target="_blank" class="color-game">
+          Klikni a hraj
+        </a>
+      </div>
+
+      <div class="box">
+        <h3>⭐ Zahraj si barvy</h3>
+        <p>Vyzkoušej hru na odhad barvy:</p>
+        <a href="https://color.method.ac/" target="_blank" class="color-game"
+          >Klikni a hraj</a
+        >
+      </div>
     </div>
+
+    <script>
+      function changeColor(id) {
+        const circle = document.getElementById(id);
+        const color = `hsl(${Math.floor(Math.random() * 360)}, 100%, 60%)`;
+        circle.style.backgroundColor = color;
+      }
+
+      function changeSize(id) {
+        const circle = document.getElementById(id);
+        const size = 60 + Math.random() * 80;
+        circle.style.width = size + "px";
+        circle.style.height = size + "px";
+      }
+
+      function spinCircle(id) {
+        const circle = document.getElementById(id);
+        circle.classList.toggle("spinning");
+      }
+
+      function fly(element) {
+        element.classList.add("flying");
+        setTimeout(() => {
+          element.classList.remove("flying");
+        }, 3000);
+      }
+
+      const magnet = document.querySelector(".magnet-target");
+
+      document
+        .querySelector(".magnet-box")
+        .addEventListener("mousemove", (e) => {
+          const rect = magnet.getBoundingClientRect();
+          const offsetX = e.clientX - rect.left - rect.width / 2;
+          const offsetY = e.clientY - rect.top - rect.height / 2;
+
+          magnet.style.transform = `translate(${offsetX * 0.2}px, ${
+            offsetY * 0.2
+          }px)`;
+        });
+
+      document
+        .querySelector(".magnet-box")
+        .addEventListener("mouseleave", () => {
+          magnet.style.transform = "translate(0, 0)";
+        });
+    </script>
   </body>
 </html>

@@ -69,7 +69,7 @@
       .btn-back {
         margin-top: 2rem;
         display: inline-block;
-        background: #e600ff;
+        background: #540e5c;
         color: white;
         padding: 0.7rem 2rem;
         border-radius: 2rem;
@@ -92,10 +92,18 @@
         border-radius: 1rem;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       }
+
+      .button-wrapper {
+        display: flex;
+        gap: 1.5rem; /* mezera mezi tlačítky */
+        margin-bottom: 2rem;
+        flex-wrap: wrap; /* aby se na malých obrazovkách složily pod sebe */
+        justify-content: center;
+      }
     </style>
   </head>
   <body>
-    <h1>📂 Můj GitHub profil</h1>
+    <h1>📂 Můj GitHub a Vercel profil</h1>
 
     <p class="info-text">
       Na mém GitHubu najdete ukázky mých projektů z HTML, CSS a JavaScriptu –
@@ -104,9 +112,27 @@
       programování.
     </p>
 
-    <a class="btn-github" href="https://github.com/Rady80" target="_blank">
-      GitHub profil
-    </a>
+    <!-- GitHub tlačítko -->
+    <!-- GitHub a Vercel tlačítka vedle sebe -->
+    <div
+      style="
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      "
+    >
+      <a class="btn-github" href="https://github.com/Rady80" target="_blank">
+        GitHub profil
+      </a>
+      <a
+        class="btn-github"
+        href="https://vercel.com/radkas-projects-f48e260e"
+        target="_blank"
+      >
+        Vercel profil
+      </a>
+    </div>
 
     <a href="index.html" class="btn-back">Zpět na hlavní stránku</a>
   </body>
